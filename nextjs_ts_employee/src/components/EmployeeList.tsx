@@ -1,16 +1,44 @@
 import React from 'react';
-import {EmployeeInfo, initialState} from "@/components/Main";
-
-interface EmployeeInfoProps {
-  information : EmployeeInfo[];
+import {EmployeeInfo} from "@/components/Main";
+import InfoTable from "@/components/InfoTable";
+import {buttonBarStyle} from "./Main";
+import {Mode} from "./Main";
+const buttonStyles : React.CSSProperties = {
+  padding: "6px 10px",
+  borderRadius: 3,
+  border: "1px solid #ccc",
 }
 
-const EmployeeList = ({information}: EmployeeInfoProps) => {
+// const buttonBarStyle: React.CSSProperties = {
+//   display: "flex",
+//   flexDirection: "row",
+//   justifyContent: "center",
+//   alignItems: "center",
+//   gap: "16px",
+//   padding: "20px",
+// }
+
+interface EmployeeInfoProps {
+  infos : EmployeeInfo[];
+  handleSelectedId: (id: number) => void;
+  selectedId: number;
+  handleMode: (mode: Mode) => void;
+}
+
+const EmployeeList = ({infos, handleSelectedId, selectedId, handleMode}: EmployeeInfoProps) => {
   return (
-      <div>
-        {information.map((employee) => (
-            <div key={employee.id}>{employee.name}</div>))}
-      </div>
+      <>
+        <div style={buttonBarStyle}>
+          {infos?.map((info) => (<button
+              key={info.id}
+              onClick={() => {
+                handleSelectedId(info.id)
+                handleMode("");
+              }}
+          >{info.name}</button>))}
+        </div>
+        <InfoTable infos={infos} selectedId={selectedId} />
+      </>
   );
 };
 

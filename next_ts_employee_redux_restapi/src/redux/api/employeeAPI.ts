@@ -31,6 +31,7 @@ export const fetchPostEmployeeInfo = createAsyncThunk<EmployeeInfo, EmployeeInfo
     async (obj, thunkAPI) => {
       try {
         const response = await axios.post(`${API_URL}/app/emp`, obj);
+        console.log(response.data);
         return response.data;
       } catch {
         return thunkAPI.rejectWithValue("데이터 전송 실패")
@@ -45,6 +46,8 @@ export const fetchDeleteEmployeeInfo = createAsyncThunk<number, number, {rejectV
     async (id, thunkAPI) => {
       try{
         const response = await axios.delete(`${API_URL}/app/emp/${id}`);
+        console.log(response.data);
+        console.log(id);
         return id;
       } catch {
         return thunkAPI.rejectWithValue("데이터 삭제 실패")

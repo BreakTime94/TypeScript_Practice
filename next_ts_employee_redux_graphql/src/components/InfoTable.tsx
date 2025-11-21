@@ -2,7 +2,7 @@ import React, {useEffect, useMemo} from 'react';
 import {EmployeeInfo} from "@/redux/slice/employeeSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {RootDispatch, RootState} from "@/redux/store";
-import {fetchDeleteEmployeeInfo} from "@/redux/api/employeeAPI";
+import {fetchDeleteEmployeeInfo, fetchGetEmployeeInfos, fetchPostEmployeeInfo} from "@/redux/api/employeeAPI";
 
 const tableStyle: React.CSSProperties = {
   width: "800px",
@@ -56,6 +56,7 @@ const InfoTable = () => {
 
     if(mode === "delete") {
       dispatch(fetchDeleteEmployeeInfo(selectedId));
+      dispatch(fetchGetEmployeeInfos());
     }
   }, [mode]);
 

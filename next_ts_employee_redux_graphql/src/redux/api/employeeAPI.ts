@@ -92,7 +92,7 @@ export const fetchDeleteEmployeeInfo = createAsyncThunk<number, number, {rejectV
     "employeeApi/fetchDeleteEmployeeInfo",
     async (id, thunkAPI) => {
       const mutation = `
-                      mutation deleteEmployee($id: ID!) {
+                      mutation deleteEmployee($id: Int!) {
                       deleteEmployee(id: $id) }
                       `
 
@@ -100,9 +100,10 @@ export const fetchDeleteEmployeeInfo = createAsyncThunk<number, number, {rejectV
 
 
         const response = await axios.post<GraphQLResponse<{deleteEmployee: number} >>(GRAPH_URL, {
-          mutation: mutation,
+          query: mutation,
           variables : { id }
         });
+        console.log("delete 정상 진입", response);
 
         if(response.data.errors?.length) return thunkAPI.rejectWithValue("GraphQL error");
 

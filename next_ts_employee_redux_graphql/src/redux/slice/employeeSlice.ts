@@ -233,7 +233,9 @@ const employeeSlice = createSlice({
         })
         .addCase(fetchGetEmployeeInfos.fulfilled, (state, action) => {
           state.loading = false;
-          state.infos = action.payload; // response.data를 뜻한다. 외부에서 return으로 날라온 데이터임.
+          state.infos = action.payload;
+          state.mode = "";
+          // response.data를 뜻한다. 외부에서 return으로 날라온 데이터임.
 
         })
         .addCase(fetchGetEmployeeInfos.rejected, (state, action) => {

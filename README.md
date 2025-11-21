@@ -31,3 +31,11 @@
 - createAsyncThunk 의 <> 제네릭 값, 파라미터 설정을 통한 API.ts 파일 구성
 - async-await try catch로 인한 에러 분기처리
 - slice에 extraReducers를 이용하여 -> builder.addCase를 통해 관련 API 설정
+
+# TypeScript + React(Redux + graphQL) 📅 2511120
+- Python 수업을 통한 graphQL 연동
+- 요청 URL, 응답 데이터 type 수정
+- graphQL로 연결하는 query & mutation 설정 (Python의 데이터 자료형 통일 중요)
+
+# 마무리 📅 2511121
+- 안 쓰는 코드 조금 정리 복습 필요
